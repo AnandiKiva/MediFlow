@@ -300,8 +300,17 @@ public class ReorderRecommendationsActivity
         }
 
 
-        permissionGranted =
-                true;
+        permissionGranted = true;
+
+        // Display recommendations that may have arrived
+        // before the user permission was confirmed.
+        List<ReorderRecommendationListItem> currentRecommendations =
+                viewModel.getRecommendations().getValue();
+
+        if (currentRecommendations != null)
+        {
+            showRecommendations(currentRecommendations);
+        }
     }
 
 
